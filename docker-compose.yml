@@ -1,0 +1,17 @@
+version: '3'
+services:  
+  php:    
+    image: php:8.0.7-apache
+    container_name: php-apache
+    environment:
+      DBHOST: 172.16.91.110
+    volumes:
+      - ./html:/var/www/html
+    restart: always
+    ports:
+      - "1080:80"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
