@@ -1,1 +1,18 @@
-##
+version: '3'
+services:  
+  php:    
+    image: r19750927/php:demo
+    container_name: php-apache
+    environment:
+      DBHOST: "172.16.91.110"
+      DBPORT: "2001"
+      DBUSER: "root"
+      DBPASSWD: "postgresql"
+    restart: always
+    ports:
+      - "1080:80"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
