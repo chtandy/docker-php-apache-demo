@@ -2,6 +2,7 @@
 ### MAIN
 - 主要是快速建立一個PHP 學習環境
 - 展示php如何使用系統環境變數為優先，沒有該變數則使用預設值
+- 若要學習php, 直接到`./deploy/study`的目錄，直接使用`docker-compose up -d` 即可
 
 ### 使用方式
 - build image
