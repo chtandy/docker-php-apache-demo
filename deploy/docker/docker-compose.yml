@@ -1,12 +1,13 @@
 version: '3'
 services:  
   php:    
-    image: php:8.0.7-apache
+    image: php:apache
     container_name: php-apache
     environment:
-      DBHOST: 172.16.91.110
-    volumes:
-      - ./html:/var/www/html
+      DBHOST: "172.16.91.110"
+      DBPORT: "2001"
+      DBUSER: "root"
+      DBPASSWD: "postgresql"
     restart: always
     ports:
       - "1080:80"
