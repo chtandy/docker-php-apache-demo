@@ -2,7 +2,6 @@
 ### MAIN
 - 主要是快速建立一個PHP 學習環境
 - 展示php如何使用系統環境變數為優先，沒有該變數則使用預設值
-- 若要學習php, 直接到`./deploy/study`的目錄，直接使用`docker-compose up -d` 即可
 
 ### 使用方式
 - build image
@@ -17,4 +16,10 @@ docker run --rm -it -p 1080:80 php:apache
 docker run --rm -it -p 1080:80 -e DBHOST=127.0.0.1 -e DBPORT=2001 -e DBUSER=root -e DBPASSWD=admin php:apache
 ```
 
-
+### 讓kubernetes hpa 作用
+- 讓pod cpu 使用率上升,燒機測試
+```
+apt update
+apt install stress
+stress -c 100
+```

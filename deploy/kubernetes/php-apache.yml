@@ -50,13 +50,13 @@ spec:
         image: r19750927/php:demo
         env:
         - name: DBHOST
-          value: 10.0.0.1
+          value: "10.0.0.1"
         - name: DBPORT
-          value: 2001
+          value: "2001"
         - name: DBUSER
-          value: root
+          value: "root"
         - name: DBPASSWD
-          value: admin
+          value: "admin"
         ports:
         - containerPort: 80
         resources:
@@ -66,16 +66,30 @@ spec:
           requests:
             cpu: 100m
             memory: 50Mi
+#---
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: php-demo
+#  namespace: default
+#spec:
+#  scaleTargetRef:
+#    apiVersion: apps/v1beta1
+#    kind: Deployment
+#    name: php-demo
+#  minReplicas: 1
+#  maxReplicas: 3
+#  targetCPUUtilizationPercentage: 75 
 ---
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: php-apache
+  name: php-demo
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: php-apache
+    name: php-demo
   minReplicas: 1
   maxReplicas: 3
   metrics:
@@ -84,4 +98,4 @@ spec:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 50
+        averageUtilization: 75
